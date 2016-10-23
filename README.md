@@ -251,4 +251,4 @@ You can now change handleClick to return early and ignore the click if someone h
 
        const current = history[this.state.stepNumber];
 
-    If you click any move link now, the board should immediately update to show what the game looked like at that time. You may also want to update handleClick to be aware of stepNumber when reading the current board state so that you can go back in time then click in the board to create a new entry. (Hint: It's easiest to .slice() off the extra elements from history at the very top of handleClick.)
+If you click any move link now, the board should immediately update to show what the game looked like at that time. You may also want to update handleClick to be aware of stepNumber when reading the current board state so that you can go back in time then click in the board to create a new entry. (Hint: It's easiest to .slice() off the extra elements from history at the very top of handleClick.)

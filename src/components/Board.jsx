@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PropTypes} from 'react'
 import Square from './Square'
 
 class Board extends Component {
@@ -27,6 +27,10 @@ class Board extends Component {
       </div>
     )
   }
+}
+
+Board.propTypes = {
+  squares: PropTypes.array.isRequired
 }
 
 export default Board
