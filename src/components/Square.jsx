@@ -1,15 +1,15 @@
 import React, {PropTypes} from 'react'
 
-function Square(props) {
+const Square = ({value, onClick}) => {
   return (
-    <button className="square" onClick={() => props.onClick()}>
-      {props.value}
+    <button className="square" onClick={() => onClick()}>
+      {value}
     </button>
   )
 }
 
 Square.propTypes = {
-  // value: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired
 }
 
