@@ -7,46 +7,47 @@ class Game extends Component {
     super()
     this.state = {
       history: [{
-        squares: Array(9).fill(null),
+        squares: Array(9).fill(''),
       }],
       stepNumber: 0,
       xIsNext: true,
     }
   }
+
   handleClick(i) {
-    var history = this.state.history.slice(0, this.state.stepNumber + 1)
-    var current = history[history.length - 1]
+    let {history, stepNumber, xIsNext} = this.state
+    let current = history.slice(0, stepNumber + 1)[history.length - 1]
     const squares = current.squares.slice()
     if (calculateWinner(squares) || squares[i]) {
       return
     }
 
-    squares[i] = this.state.xIsNext ? 'X' : 'O'
+    squares[i] = xIsNext ? 'X' : 'O'
 
     this.setState({
-      history: history.concat([{
-        squares: squares
-      }]),
+      history: history.concat([{squares}]),
       stepNumber: history.length,
-      xIsNext: !this.state.xIsNext,
+      xIsNext: !xIsNext,
     })
   }
+
   jumpTo(step) {
     this.setState({
       stepNumber: step,
       xIsNext: (step % 2) ? false : true,
     })
   }
+
   render() {
-    const history = this.state.history
-    const current = history[this.state.stepNumber]
+    const {history, stepNumber, xIsNext} = this.state
+    const current = history[stepNumber]
 
     const winner = calculateWinner(current.squares)
     let status
     if (winner) {
       status = 'Winner: ' + winner
     } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O')
+      status = 'Next player: ' + (xIsNext ? 'X' : 'O')
     }
 
     const moves = history.map((step, move) => {
